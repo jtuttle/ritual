@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System;
+﻿using System;
+using System.Collections;
 
 public class FSMTransition {
     public Enum NextStateId { get; private set; }
