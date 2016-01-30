@@ -3,7 +3,7 @@
 using UnityEngine;
 
 public enum GameState {
-	GameCreate, GamePlay
+	GameCreate, GamePlay, GameWin, GameLose
 }
 
 public class GameController : MonoBehaviour {
@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour {
 
 		_fsm.AddState(new GameCreateState());
 		_fsm.AddState(new GamePlayState());
+		_fsm.AddState(new GameWinState());
+		_fsm.AddState(new GameLoseState());
 
 		_fsm.ChangeState(new FSMTransition(GameState.GameCreate));
 	}
