@@ -22,7 +22,7 @@ public class GameCreateState : FSMState {
 
 		List<AudioClip> notes = GetNotes();
 
-		_playerNote = UnityEngine.Random.Range(0, notes.Count);
+		_playerNote = UnityEngine.Random.Range(1, notes.Count - 2);
 
 		AudioSource playerSource = GameObject.Find("Player").GetComponent<AudioSource>();
 		playerSource.clip = notes[_playerNote];

@@ -6,6 +6,9 @@ public class GamePlayState : FSMState {
 	private CharacterController _player;
 	private AudioSource _playerSource;
 
+	private GameData _gameData;
+	private float _choirZ;
+
 	private float SPEED = 0.1f;
 
     public GamePlayState()
@@ -23,12 +26,21 @@ public class GamePlayState : FSMState {
     public override void EnterState(FSMTransition transition) {
         base.EnterState(transition);
 
-		GameData gameData = (transition as GameDataTransition).GameData;
+		_gameData = (transition as GameDataTransition).GameData;
+		_choirZ = _gameData.Monks[0].transform.position.z;
     }
 
 	public override void Update() {
 		MovePlayer();
 		PlayPlayerNote();
+
+		if(HasJoinedChorus()) {
+			if(HasCorrectPlacement()) {
+				ExitState(new FSMTransition(GameState.GameWin));
+			} else {
+				ExitState(new FSMTransition(GameState.GameLose));
+			}
+		}
 	}
 
 	private void MovePlayer() {
@@ -64,5 +76,20 @@ public class GamePlayState : FSMState {
 			_playerSource.volume = 0;
 			_playerSource.Stop();
 		}
+	}
+
+	private bool HasJoinedChorus() {
+		return _player.transform.position.z >= _choirZ;
+	}
+
+	private bool HasCorrectPlacement() {
+		GameObject leftMonk = _gameData.Monks[_gameData.PlayerNote - 1];
+		GameObject rightMonk = _gameData.Monks[_gameData.PlayerNote];
+
+		float xMin = leftMonk.transform.position.x;
+		float xMax = rightMonk.transform.position.x;
+		float playerX = _player.transform.position.x;
+
+		return playerX > xMin && playerX < xMax;
 	}
 }
