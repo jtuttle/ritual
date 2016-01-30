@@ -11,13 +11,11 @@ public class GameCreateState : FSMState {
 	public override void InitState(FSMTransition transition) {
 		base.InitState(transition);
 
-
-
-
-		//         ExitState(new FSMTransition(GameState.PlayerCreate));
 	}
 
 	public override void EnterState(FSMTransition transition) {
 		base.EnterState(transition);
+
+		ExitState(new FSMTransition(GameState.GamePlay));
 	}
 }
