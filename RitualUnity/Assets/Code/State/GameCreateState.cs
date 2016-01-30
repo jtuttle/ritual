@@ -19,8 +19,7 @@ public class GameCreateState : FSMState {
 	public override void EnterState(FSMTransition transition) {
 		base.EnterState(transition);
 
-		// TODO: retrieve this from resources manager
-		List<AudioClip> notes = new List<AudioClip>();
+		List<AudioClip> notes = GetNotes();
 
 		PlaceMonks(notes);
 		Debug.Log("WOO");
@@ -38,13 +37,30 @@ public class GameCreateState : FSMState {
 		float xStep = 6;
 		float z = 1;
 
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < 1; i++) {//notes.Count; i++) {
 			GameObject monk = (GameObject)GameObject.Instantiate(prototype);
+
+			AudioSource source = monk.GetComponent<AudioSource>();
+			source.clip = notes[i];
+			source.Play();
 
 			monk.transform.position = new Vector3(startX + (xStep * i), 1.5f, z);
 			// TODO: change GO name to Monk(note) or something useful
 
 			_monks.Add(monk);
 		}
+	}
+
+	// TODO: hook this up to Jasper's resource manager thing
+	// TEMPORARY while Jasper is coding up his thing
+	private List<AudioClip> GetNotes() {
+		List<AudioClip> notes = new List<AudioClip>();
+
+		notes.Add(Resources.Load("Chanting/CMaj/C5") as AudioClip);
+		notes.Add(Resources.Load("Chanting/CMaj/E5") as AudioClip);
+		notes.Add(Resources.Load("Chanting/CMaj/G4") as AudioClip);
+		notes.Add(Resources.Load("Chanting/CMaj/G5") as AudioClip);
+
+		return notes;
 	}
 }
