@@ -226,11 +226,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 477630, guid: 777b86743c9634b9e8a07ca7f879ec4f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.54
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 477630, guid: 777b86743c9634b9e8a07ca7f879ec4f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5.77
       objectReference: {fileID: 0}
     - target: {fileID: 477630, guid: 777b86743c9634b9e8a07ca7f879ec4f, type: 2}
       propertyPath: m_LocalRotation.x
@@ -250,32 +250,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 477630, guid: 777b86743c9634b9e8a07ca7f879ec4f, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 777b86743c9634b9e8a07ca7f879ec4f, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &780432544 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 102172, guid: 777b86743c9634b9e8a07ca7f879ec4f, type: 2}
-  m_PrefabInternal: {fileID: 780432543}
---- !u!143 &780432545
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 780432544}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1203604148
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,4 +354,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
