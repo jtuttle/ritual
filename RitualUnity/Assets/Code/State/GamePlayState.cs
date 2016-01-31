@@ -1,11 +1,13 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine;
 
 public class GamePlayState : FSMState {
 	private CharacterController _player;
 	private AudioSource _playerSource;
-	private float _choirZ;
+
+	private Rect _bounds;
 
 	private float SPEED = 0.2f;
 
@@ -25,14 +27,12 @@ public class GamePlayState : FSMState {
 		_player = GameData.Player.GetComponent<CharacterController>();
 		_playerSource = _player.GetComponent<AudioSource>();
 
-		_choirZ = GameData.Monks[0].transform.position.z;
+		_bounds = GetMovementBounds();
     }
 
 	public override void ExitState(FSMTransition transition) {
 		_player = null;
 		_playerSource = null;
-
-		_choirZ = -1.0f;
 
 		base.ExitState(transition);
 	}
@@ -50,31 +50,42 @@ public class GamePlayState : FSMState {
 		}
 	}
 
+	private Rect GetMovementBounds() {
+		List<GameObject> monks = GameData.Monks;
+
+		Vector3 topLeft = monks[0].transform.position;
+		Vector3 topRight = monks[monks.Count - 1].transform.position;
+
+		return new Rect(topLeft.x, 0, topRight.x - topLeft.x, topLeft.z);
+	}
+
 	private void MovePlayer() {
-		int h = 0;
-		int v = 0;
+		float h = 0;
+		float v = 0;
 
-		if(Input.GetKey(KeyCode.LeftArrow)) {
-			h -= 1;
+		Vector3 playerPos = _player.transform.position;
+
+		if(Input.GetKey(KeyCode.LeftArrow) && playerPos.x - SPEED > _bounds.xMin) {
+			h -= SPEED;
 		}
 
-		if(Input.GetKey(KeyCode.RightArrow)) {
-			h += 1;
+		if(Input.GetKey(KeyCode.RightArrow) && playerPos.x + SPEED < _bounds.xMax) {
+			h += SPEED;
 		}
 
-		if(Input.GetKey(KeyCode.UpArrow)) {
-			v += 1;
+		if(Input.GetKey(KeyCode.UpArrow)/* && playerPos.z + SPEED < _bounds.yMax*/) {
+			v += SPEED;
 		}
 
-		if(Input.GetKey(KeyCode.DownArrow)) {
-			v -= 1;
+		if(Input.GetKey(KeyCode.DownArrow) && playerPos.z - SPEED > _bounds.yMin) {
+			v -= SPEED;
 		}
 
-		_player.Move(new Vector3(h * SPEED, 0, v * SPEED));
+		_player.Move(new Vector3(h, 0, v));
 
 		// Hack to stop player from jumping into the air on occasion.
-		Vector3 playerPos = _player.transform.position;
-		playerPos = new Vector3(playerPos.x, 0, playerPos.z);
+		//Vector3 playerPos = _player.transform.position;
+		//playerPos = new Vector3(playerPos.x, 0, playerPos.z);
 	}
 
 	private void PlayPlayerNote() {
@@ -90,7 +101,7 @@ public class GamePlayState : FSMState {
 	}
 
 	private bool HasJoinedChorus() {
-		return _player.transform.position.z >= _choirZ;
+		return _player.transform.position.z >= _bounds.yMax;
 	}
 
 	private bool HasCorrectPlacement() {
