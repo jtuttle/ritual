@@ -100,7 +100,8 @@ ModelImporter:
     4300000: Monk1:pSphere4
     4300002: Monk1:polySurface3
     4300004: Monk1:polySurface4
-    7400000: Take 001
+    7400000: Idle
+    7400002: Walk
     9500000: //RootNode
     13700000: Monk1:polySurface3
     13700002: Monk1:polySurface4
@@ -125,7 +126,128 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/Belly
+        weight: 1
+      - path: Base/Belly/Torso
+        weight: 1
+      - path: Base/Belly/Torso/L_Clav
+        weight: 1
+      - path: Base/Belly/Torso/L_Clav/L_Arm
+        weight: 1
+      - path: Base/Belly/Torso/L_Clav/L_Arm/L_Elbow
+        weight: 1
+      - path: Base/Belly/Torso/L_Clav/L_Arm/L_Elbow/L_Wrist
+        weight: 1
+      - path: Base/Belly/Torso/L_Clav/L_Arm/L_Elbow/L_Wrist/joint21
+        weight: 1
+      - path: Base/Belly/Torso/Neck
+        weight: 1
+      - path: Base/Belly/Torso/Neck/Head
+        weight: 1
+      - path: Base/Belly/Torso/Neck/Head/joint24
+        weight: 1
+      - path: Base/Belly/Torso/R_Clav
+        weight: 1
+      - path: Base/Belly/Torso/R_Clav/R_Arm
+        weight: 1
+      - path: Base/Belly/Torso/R_Clav/R_Arm/R_Elbow
+        weight: 1
+      - path: Base/Belly/Torso/R_Clav/R_Arm/R_Elbow/R_Wrist
+        weight: 1
+      - path: Base/Belly/Torso/R_Clav/R_Arm/R_Elbow/R_Wrist/joint16
+        weight: 1
+      - path: Base/L_Leg
+        weight: 1
+      - path: Base/L_Leg/L_Knee
+        weight: 1
+      - path: Base/L_Leg/L_Knee/L_Ankle
+        weight: 1
+      - path: Base/L_Leg/L_Knee/L_Ankle/joint23
+        weight: 1
+      - path: Base/R_Leg
+        weight: 1
+      - path: Base/R_Leg/R_Knee
+        weight: 1
+      - path: Base/R_Leg/R_Knee/R_Foot 1
+        weight: 1
+      - path: Base/R_Leg/R_Knee/R_Foot 1/joint22
+        weight: 1
+      - path: ikHandle1
+        weight: 1
+      - path: ikHandle2
+        weight: 1
+      - path: Monk1:polySurface3
+        weight: 1
+      - path: Monk1:polySurface4
+        weight: 1
+      - path: Monk1:pSphere4
+        weight: 1
+      - path: WholeControl
+        weight: 1
+      - path: WholeControl/Hips
+        weight: 1
+      - path: WholeControl/Hips/Belly 1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1/L_Clav 1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1/L_Clav 1/L_Arm 1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1/L_Clav 1/L_Arm 1/L_Elbow 1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1/L_Clav 1/L_Arm 1/L_Elbow 1/L_Wrist
+          1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1/Neck 1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1/Neck 1/Head 1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1/R_Arm 1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1/R_Arm 1/R_Elbow 1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1/R_Arm 1/R_Elbow 1/R_Wrist 1
+        weight: 1
+      - path: WholeControl/Hips/Belly 1/Torso 1/R_Clav 1
+        weight: 1
+      - path: WholeControl/L_Foot
+        weight: 1
+      - path: WholeControl/R_Foot
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
