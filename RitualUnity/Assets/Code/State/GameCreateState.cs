@@ -29,7 +29,11 @@ public class GameCreateState : FSMState {
 	}
 
 	private GameObject PlacePlayer() {
-		return GameObject.Instantiate(Resources.Load("Prefabs/Player") as GameObject);
+		GameObject player = GameObject.Instantiate(Resources.Load("Prefabs/Player") as GameObject);
+
+		Camera.main.GetComponent<FollowCamera>().Target = player.transform;
+
+		return player;
 	}
 
 	private List<GameObject> PlaceMonks() {
