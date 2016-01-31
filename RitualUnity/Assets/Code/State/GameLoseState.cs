@@ -58,7 +58,7 @@ public class GameLoseState : BaseGameEndState {
 	public override void Update() {
 		base.Update();
 
-		if(_light.intensity > 0) {
+		if(_light && _light.intensity > 0) {
 			_light.intensity -= LIGHT_INTENSITY_FADE;
 		}
 	}
