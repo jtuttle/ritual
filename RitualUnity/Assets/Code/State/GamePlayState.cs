@@ -9,7 +9,7 @@ public class GamePlayState : FSMState {
 
 	private Rect _bounds;
 
-	private float SPEED = 0.2f;
+	private float SPEED = 0.1f;
 
     public GamePlayState()
         : base(GameState.GamePlay) {
@@ -82,10 +82,6 @@ public class GamePlayState : FSMState {
 		}
 
 		_player.Move(new Vector3(h, 0, v));
-
-		// Hack to stop player from jumping into the air on occasion.
-		//Vector3 playerPos = _player.transform.position;
-		//playerPos = new Vector3(playerPos.x, 0, playerPos.z);
 	}
 
 	private void PlayPlayerNote() {
@@ -105,6 +101,8 @@ public class GamePlayState : FSMState {
 	}
 
 	private bool HasCorrectPlacement() {
+		return true;
+
 		GameObject leftMonk = GameData.Monks[GameData.PlayerNote - 1];
 		GameObject rightMonk = GameData.Monks[GameData.PlayerNote];
 
