@@ -7,7 +7,7 @@ public class GamePlayState : FSMState {
 	private AudioSource _playerSource;
 	private float _choirZ;
 
-	private float SPEED = 0.1f;
+	private float SPEED = 0.2f;
 
     public GamePlayState()
         : base(GameState.GamePlay) {
