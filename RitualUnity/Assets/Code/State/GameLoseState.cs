@@ -35,7 +35,7 @@ public class GameLoseState : BaseGameEndState {
 
 		PlayEndMusic(_loseMusic);
 
-		_flashFrameDelay = 100;
+		_flashFrameDelay = 60;
 		_flashFrameDuration = 5;
 		_flashStarted = false;
 	}
