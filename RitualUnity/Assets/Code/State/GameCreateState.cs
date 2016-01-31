@@ -43,9 +43,9 @@ public class GameCreateState : FSMState {
 
 		float monkX = -8;
 		float xStep = 4;
-		float z = 8;
+		float z = 12;
 
-		for(int i = 0; i < 5; i++) { //notes.Count; i++) {
+		for(int i = 0; i < 5; i++) {
 			GameObject monk = (GameObject)GameObject.Instantiate(prototype);
 
 			monk.transform.position = new Vector3(monkX, 0, z);
