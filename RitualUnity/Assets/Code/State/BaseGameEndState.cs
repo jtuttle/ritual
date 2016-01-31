@@ -59,10 +59,10 @@ public class BaseGameEndState : FSMState {
 		Camera.main.GetComponent<AudioSource>().volume = 0;
 	}
 
-	protected void PlayEndMusic(AudioClip music) {
+	protected void PlayEndMusic(AudioClip music, float volume = 1.0f) {
 		_source = GameData.Player.GetComponent<AudioSource>();
 		_source.clip = music;
-		_source.volume = 1;
+		_source.volume = volume;
 		_source.loop = false;
 		_source.Play();
 	}
