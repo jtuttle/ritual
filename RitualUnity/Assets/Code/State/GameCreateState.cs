@@ -37,20 +37,25 @@ public class GameCreateState : FSMState {
 	}
 
 	private List<GameObject> PlaceMonks() {
-		List<GameObject> monkPrototypes = new List<GameObject>();
+		List<GameObject> monkAnims = new List<GameObject>();
+
+		GameObject monkPrototype = Resources.Load("Prefabs/Monk") as GameObject;
 
 		for(int i = 0; i < 4; i++) {
-			monkPrototypes.Add(Resources.Load("Prefabs/Monks/Monk" + (i + 1)) as GameObject);
+			string monkAnimPath = "Prefabs/MonkAnims/MonkAnim" + (i + 1);
+			monkAnims.Add(Resources.Load(monkAnimPath) as GameObject);
 		}
 
 		List<GameObject> monks = new List<GameObject>();
 
-		float monkX = -8;
-		float xStep = 4;
+		float monkX = -10;
+		float xStep = 5;
 		float z = 12;
 
 		for(int i = 0; i < 5; i++) {
-			GameObject monk = (GameObject)GameObject.Instantiate(monkPrototypes[i % 4]);
+			GameObject monk = (GameObject)GameObject.Instantiate(monkPrototype);
+			GameObject monkAnim = (GameObject)GameObject.Instantiate(monkAnims[i % 4]);
+			monkAnim.transform.parent = monk.transform;
 
 			monk.transform.position = new Vector3(monkX, 0, z);
 			monk.name = "Monk";

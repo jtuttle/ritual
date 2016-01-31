@@ -10,7 +10,7 @@ public class BackgroundMusic : MonoBehaviour {
         int randomclips = Random.Range(0, clips.Length);
         AudioSource source = gameObject.AddComponent<AudioSource>();
         source.clip = clips[randomclips];
-        source.volume = 1.0f;
+		source.volume = 0.5f;
         source.Play();
         Destroy(source, clips[randomclips].length);
         Invoke("PlayNextSong", source.clip.length);
@@ -20,13 +20,13 @@ public class BackgroundMusic : MonoBehaviour {
     void PlayNextSong()
     {
         AudioSource source = gameObject.AddComponent<AudioSource>();
-        
-            int randomclips = Random.Range(0, clips.Length);
+    
+        int randomclips = Random.Range(0, clips.Length);
 
-            source.clip = clips[randomclips];
-            source.volume = .01f;
-            source.Play();
-            Destroy(source, clips[randomclips].length);
-            Invoke("PlayNextSong", source.clip.length);
-        }
+        source.clip = clips[randomclips];
+        source.volume = .01f;
+        source.Play();
+        Destroy(source, clips[randomclips].length);
+        Invoke("PlayNextSong", source.clip.length);
     }
+}
