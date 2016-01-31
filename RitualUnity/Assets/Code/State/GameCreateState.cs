@@ -35,6 +35,13 @@ public class GameCreateState : FSMState {
 		ExitState(new GameDataTransition(GameState.GamePlay, data));
 	}
 
+	public override void ExitState(FSMTransition transition) {
+		_monks = null;
+		_playerNote = -1;
+
+		base.ExitState(transition);
+	}
+
 	// TODO: change this to actually use the notes.
 	private void PlaceMonks(List<AudioClip> notes, int playerNote) {
 		_monks = new List<GameObject>();
@@ -42,7 +49,7 @@ public class GameCreateState : FSMState {
 		GameObject prototype = Resources.Load("Prefabs/Monk") as GameObject;
 
 		float monkX = -6;
-		float xStep = 6;
+		float xStep = 3;
 		float z = 1;
 
 		for(int i = 0; i < notes.Count; i++) {
@@ -69,10 +76,12 @@ public class GameCreateState : FSMState {
 	private List<AudioClip> GetNotes() {
 		List<AudioClip> notes = new List<AudioClip>();
 
-		notes.Add(Resources.Load("Chanting/CMaj/1_G4") as AudioClip);
-		notes.Add(Resources.Load("Chanting/CMaj/2_C5") as AudioClip);
-		notes.Add(Resources.Load("Chanting/CMaj/3_E5") as AudioClip);
-		notes.Add(Resources.Load("Chanting/CMaj/4_G5") as AudioClip);
+		notes.Add(Resources.Load("Chanting/CMaj/1_C4") as AudioClip);
+		notes.Add(Resources.Load("Chanting/CMaj/2_E4") as AudioClip);
+		notes.Add(Resources.Load("Chanting/CMaj/3_G4") as AudioClip);
+		notes.Add(Resources.Load("Chanting/CMaj/4_C5") as AudioClip);
+		notes.Add(Resources.Load("Chanting/CMaj/5_E5") as AudioClip);
+		notes.Add(Resources.Load("Chanting/CMaj/6_G5") as AudioClip);
 
 		return notes;
 	}

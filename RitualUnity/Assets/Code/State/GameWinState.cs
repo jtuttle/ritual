@@ -3,7 +3,6 @@
 using UnityEngine;
 
 public class GameWinState : FSMState {
-
 	public GameWinState()
 		: base(GameState.GameWin) {
 
