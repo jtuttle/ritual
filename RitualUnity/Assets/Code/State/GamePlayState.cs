@@ -71,6 +71,10 @@ public class GamePlayState : FSMState {
 		}
 
 		_player.Move(new Vector3(h * SPEED, 0, v * SPEED));
+
+		// Hack to stop player from jumping into the air on occasion.
+		Vector3 playerPos = _player.transform.position;
+		playerPos = new Vector3(playerPos.x, 0, playerPos.z);
 	}
 
 	private void PlayPlayerNote() {

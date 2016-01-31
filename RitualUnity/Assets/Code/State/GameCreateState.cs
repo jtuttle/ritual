@@ -44,15 +44,8 @@ public class GameCreateState : FSMState {
 		for(int i = 0; i < 5; i++) { //notes.Count; i++) {
 			GameObject monk = (GameObject)GameObject.Instantiate(prototype);
 
-			/*
-			AudioSource source = monk.GetComponent<AudioSource>();
-			source.clip = notes[i];
-			source.Play();
-			*/
-
 			monk.transform.position = new Vector3(monkX, 0, z);
 			monk.name = "Monk";
-			//monk.name = "Monk (" + notes[i].name + ")";
 
 			monks.Add(monk);
 
