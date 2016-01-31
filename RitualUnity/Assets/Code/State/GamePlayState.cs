@@ -103,7 +103,11 @@ public class GamePlayState : FSMState {
 		}
 
 		if(h != 0 || v != 0) {
-			_player.Move(new Vector3(h, 0, v));
+			Vector3 move = new Vector3(h, 0, v);
+
+			_player.Move(move);
+			_player.transform.rotation = Quaternion.LookRotation(move, Vector3.up);
+
 			_moved = true;
 		}
 	}

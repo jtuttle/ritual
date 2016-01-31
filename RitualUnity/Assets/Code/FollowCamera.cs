@@ -19,12 +19,15 @@ public class FollowCamera : MonoBehaviour {
 		float currentRotation = transform.eulerAngles.y;
 		float currentHeight = transform.position.y;
 
-		currentRotation = Mathf.LerpAngle(currentRotation, targetRotation, RotationDamping * Time.deltaTime);
+		// Camera should not turn with player.
+		//currentRotation = Mathf.LerpAngle(currentRotation, targetRotation, RotationDamping * Time.deltaTime);
+		currentRotation = Mathf.LerpAngle(currentRotation, 0, RotationDamping * Time.deltaTime);
+
 		currentHeight = Mathf.Lerp(currentHeight, targetHeight, HeightDamping * Time.deltaTime);
 
 		transform.position = Target.position;
 		transform.position -= Quaternion.Euler(0, currentRotation, 0) * Vector3.forward * Distance;
-		transform.position = new Vector3(transform.position.x,currentHeight,transform.position.z);
+		transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
 
 		transform.LookAt(Target.transform.position + Offset);
 	}

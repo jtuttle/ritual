@@ -234,11 +234,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 224065365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.68, y: 0.56, z: 12.18}
+  m_LocalPosition: {x: -3.6853878, y: -0.52513367, z: -0.11570549}
   m_LocalScale: {x: 1, y: 1.6665796, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1921444525}
+  m_RootOrder: 0
 --- !u!1001 &246195992
 Prefab:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  Offset: {x: 0, y: 2.5, z: 0}
+  Offset: {x: 0, y: 2.6, z: 0}
   Distance: 3
   Height: 3
   HeightDamping: 2
@@ -468,11 +468,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 783822257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.49, y: 0.56, z: 12.18}
+  m_LocalPosition: {x: 11.4846115, y: -0.52513367, z: -0.11570549}
   m_LocalScale: {x: 1, y: 1.6665796, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 1921444525}
+  m_RootOrder: 3
 --- !u!1 &1203604148
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,11 +605,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1291424121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.54, y: 0.56, z: 12.18}
+  m_LocalPosition: {x: 6.5346117, y: -0.52513367, z: -0.11570549}
   m_LocalScale: {x: 1, y: 1.6665796, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1921444525}
+  m_RootOrder: 2
 --- !u!1 &1329688911
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,11 +720,42 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1678536100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.54, y: 0.78, z: 12.18}
+  m_LocalPosition: {x: 1.454612, y: -0.3051337, z: -0.11570549}
   m_LocalScale: {x: 1, y: 1.6665796, z: 1}
   m_Children: []
+  m_Father: {fileID: 1921444525}
+  m_RootOrder: 1
+--- !u!1 &1921444524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1921444525}
+  m_Layer: 0
+  m_Name: Spotlights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1921444525
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1921444524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.994612, y: 1.0851337, z: 12.295706}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 224065369}
+  - {fileID: 1678536104}
+  - {fileID: 1291424125}
+  - {fileID: 783822261}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1001 &1925272101
 Prefab:
   m_ObjectHideFlags: 0
