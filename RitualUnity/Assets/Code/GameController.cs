@@ -3,7 +3,7 @@
 using UnityEngine;
 
 public enum GameState {
-	GameCreate, GamePlay, GameWin, GameLose
+	GameCreate, GameReset, GamePlay, GameWin, GameLose
 }
 
 public class GameController : MonoBehaviour {
