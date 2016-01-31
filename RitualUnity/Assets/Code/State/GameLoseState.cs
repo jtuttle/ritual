@@ -44,7 +44,7 @@ public class GameLoseState : BaseGameEndState {
 
 		SetPixelAlpha(0);
 
-		PlayEndMusic(_loseMusic, 0.5f);
+		PlayEndMusic(_loseMusic, 0.7f);
 
 		_idol.GetComponent<AudioSource>().clip = _godChant;
 		_idol.GetComponent<AudioSource>().Play();
