@@ -30,6 +30,16 @@ public class GamePlayState : FSMState {
 		_choirZ = _gameData.Monks[0].transform.position.z;
     }
 
+	public override void ExitState(FSMTransition transition) {
+		_player = null;
+		_playerSource = null;
+
+		_gameData = null;
+		_choirZ = -1.0f;
+
+		base.ExitState(transition);
+	}
+
 	public override void Update() {
 		MovePlayer();
 		PlayPlayerNote();

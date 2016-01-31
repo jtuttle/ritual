@@ -2,9 +2,9 @@
 
 using UnityEngine;
 
-public class GameWinState : FSMState {
-	public GameWinState()
-		: base(GameState.GameWin) {
+public class GameResetState : FSMState {
+	public GameResetState()
+		: base(GameState.GameReset) {
 
 	}
 
