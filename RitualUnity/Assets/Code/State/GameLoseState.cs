@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class GameLoseState : BaseGameEndState {
 	private AudioClip _loseMusic;
+	private GameObject _smokePrototype;
 
 	private Color _flashColor;
 	private Texture2D _flashPixel;
+
 	private int _flashFrameDelay;
 	private int _flashFrameDuration;
 	private bool _flashStarted;
+
+	private GameObject _smoke;
 
 	public GameLoseState()
 		: base(GameState.GameLose) {
@@ -19,13 +23,14 @@ public class GameLoseState : BaseGameEndState {
 	public override void InitState(FSMTransition transition) {
 		base.InitState(transition);
 
+		_loseMusic = Resources.Load("Music/Death Bolt") as AudioClip;
+		_smokePrototype = Resources.Load("Prefabs/Smoke") as GameObject;
+
 		_flashColor = Color.white;
 
 		_flashPixel = new Texture2D(1,1);
 		_flashPixel.SetPixel(0, 0, _flashColor);
 		_flashPixel.Apply();
-
-		_loseMusic = Resources.Load("Music/Death Bolt") as AudioClip;
 	}
 
 	public override void EnterState(FSMTransition transition) {
@@ -43,6 +48,9 @@ public class GameLoseState : BaseGameEndState {
 	public override void ExitState(FSMTransition transition) {
 		SetPlayerVisible(true);
 
+		GameObject.Destroy(_smoke);
+		_smoke = null;
+
 		base.ExitState(transition);
 	}
 
@@ -57,6 +65,9 @@ public class GameLoseState : BaseGameEndState {
 			if(!_flashStarted) {	
 				_flashStarted = true;
 				SetPlayerVisible(false);
+
+				_smoke = GameObject.Instantiate(_smokePrototype);
+				_smoke.transform.position = GameData.Player.transform.position;
 			}
 
 			if(_flashFrameDuration > 0) _flashFrameDuration--;
