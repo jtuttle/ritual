@@ -94,7 +94,7 @@ public class GamePlayState : FSMState {
 			h += SPEED;
 		}
 
-		if(Input.GetKey(KeyCode.UpArrow)/* && playerPos.z + SPEED < _bounds.yMax*/) {
+		if(Input.GetKey(KeyCode.UpArrow)) {
 			v += SPEED;
 		}
 
@@ -113,10 +113,14 @@ public class GamePlayState : FSMState {
 			if(!_playerSource.isPlaying) {
 				_playerSource.volume = 1;
 				_playerSource.Play();
+
+				SetMonkVolume(0);
 			}
 		} else {
 			_playerSource.volume = 0;
 			_playerSource.Stop();
+
+			SetMonkVolume(1);
 		}
 	}
 
@@ -133,5 +137,11 @@ public class GamePlayState : FSMState {
 		float playerX = _player.transform.position.x;
 
 		return playerX > xMin && playerX < xMax;
+	}
+
+	private void SetMonkVolume(float volume) {
+		foreach(GameObject monk in GameData.Monks) {
+			monk.GetComponent<AudioSource>().volume = volume;
+		}
 	}
 }
