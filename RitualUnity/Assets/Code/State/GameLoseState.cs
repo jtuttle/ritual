@@ -102,9 +102,6 @@ public class GameLoseState : BaseGameEndState {
 
 		for(int i = 0; i < childCount; i++) {
 			child = player.transform.GetChild(i);
-
-			if(child.name == "rig") continue;
-
 			child.gameObject.SetActive(visible);
 		}
 	}
