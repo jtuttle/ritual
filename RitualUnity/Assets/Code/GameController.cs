@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
 		_fsm = new FiniteStateMachine();
 
 		_fsm.AddState(new GameCreateState());
+		_fsm.AddState(new GameResetState());
 		_fsm.AddState(new GamePlayState());
 		_fsm.AddState(new GameWinState());
 		_fsm.AddState(new GameLoseState());

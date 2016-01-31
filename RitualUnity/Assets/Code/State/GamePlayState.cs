@@ -6,7 +6,6 @@ public class GamePlayState : FSMState {
 	private CharacterController _player;
 	private AudioSource _playerSource;
 
-	private GameData _gameData;
 	private float _choirZ;
 
 	private float SPEED = 0.1f;
@@ -26,15 +25,13 @@ public class GamePlayState : FSMState {
     public override void EnterState(FSMTransition transition) {
         base.EnterState(transition);
 
-		_gameData = (transition as GameDataTransition).GameData;
-		_choirZ = _gameData.Monks[0].transform.position.z;
+		_choirZ = GameData.Monks[0].transform.position.z;
     }
 
 	public override void ExitState(FSMTransition transition) {
 		_player = null;
 		_playerSource = null;
 
-		_gameData = null;
 		_choirZ = -1.0f;
 
 		base.ExitState(transition);
@@ -93,8 +90,8 @@ public class GamePlayState : FSMState {
 	}
 
 	private bool HasCorrectPlacement() {
-		GameObject leftMonk = _gameData.Monks[_gameData.PlayerNote - 1];
-		GameObject rightMonk = _gameData.Monks[_gameData.PlayerNote];
+		GameObject leftMonk = GameData.Monks[GameData.PlayerNote - 1];
+		GameObject rightMonk = GameData.Monks[GameData.PlayerNote];
 
 		float xMin = leftMonk.transform.position.x;
 		float xMax = rightMonk.transform.position.x;
