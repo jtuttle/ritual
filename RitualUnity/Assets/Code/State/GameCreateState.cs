@@ -28,7 +28,7 @@ public class GameCreateState : FSMState {
 		base.ExitState(transition);
 	}
 
-	private void PlacePlayer() {
+	private GameObject PlacePlayer() {
 		return GameObject.Instantiate(Resources.Load("Prefabs/Player") as GameObject);
 	}
 
