@@ -13416,7 +13416,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178668}
-  m_LocalRotation: {x: 0.60409963, y: -0.5722947, z: 0.09102732, w: 0.5470433}
+  m_LocalRotation: {x: 0.6040997, y: -0.5722948, z: 0.09102733, w: 0.5470434}
   m_LocalPosition: {x: -0.0000000013550743, y: 0.0011639284, z: -0.000000001322478}
   m_LocalScale: {x: 0.9999999, y: 0.9999998, z: 0.9999999}
   m_Children:
@@ -14023,7 +14023,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133574}
-  m_LocalRotation: {x: 0.5978261, y: -0.25282887, z: 0.7128367, w: 0.26560408}
+  m_LocalRotation: {x: 0.59782606, y: -0.25282884, z: 0.7128366, w: 0.26560405}
   m_LocalPosition: {x: -1.8877931, y: 2.3484657, z: -0.24002941}
   m_LocalScale: {x: 11.347019, y: 11.347019, z: 11.347016}
   m_Children: []
@@ -14328,7 +14328,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109094}
-  m_LocalRotation: {x: -0.5978261, y: -0.25282887, z: 0.7128367, w: -0.26560408}
+  m_LocalRotation: {x: -0.59782606, y: -0.25282884, z: 0.7128366, w: -0.26560405}
   m_LocalPosition: {x: 1.8877931, y: 2.3484657, z: -0.24002941}
   m_LocalScale: {x: 11.347019, y: 11.347019, z: 11.347016}
   m_Children: []
@@ -20050,7 +20050,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190722}
-  m_LocalRotation: {x: -0.066114545, y: 0.1545208, z: -0.7498295, w: 0.6399282}
+  m_LocalRotation: {x: -0.06611454, y: 0.15452078, z: -0.7498294, w: 0.63992816}
   m_LocalPosition: {x: 0.5945332, y: 2.5033488, z: -0.1394019}
   m_LocalScale: {x: 31.0757, y: 31.0757, z: 31.075697}
   m_Children: []
@@ -20393,7 +20393,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106500}
-  m_LocalRotation: {x: -0.066114545, y: -0.1545208, z: 0.7498295, w: 0.6399282}
+  m_LocalRotation: {x: -0.06611454, y: -0.15452078, z: 0.7498294, w: 0.63992816}
   m_LocalPosition: {x: -0.5945332, y: 2.5033488, z: -0.1394019}
   m_LocalScale: {x: 31.0757, y: 31.0757, z: 31.075697}
   m_Children: []
@@ -24124,7 +24124,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 0
   MinDistance: 2
-  MaxDistance: 3
+  MaxDistance: 2.5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -25066,7 +25066,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MaxDistance
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MinDistance

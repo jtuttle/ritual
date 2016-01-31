@@ -17,32 +17,19 @@ public class GameResetState : FSMState {
 	public override void EnterState(FSMTransition transition) {
 		base.EnterState(transition);
 
-		List<AudioClip> notes = GetNotes();
+		GameData.Player.transform.position = Vector3.zero;
 
 		GameData.Notes = GetNotes();
-
-		int playerNote = UnityEngine.Random.Range(1, notes.Count - 2);
-		GameData.PlayerNote = playerNote;
+		GameData.PlayerNote = UnityEngine.Random.Range(1, GameData.Notes.Count - 2);
 
 		SetPlayerNote();
-		SetMonkNotes();
+		SetMonkNotes(GameData.Monks, GameData.Notes, GameData.PlayerNote);
 
 		ExitState(new FSMTransition(GameState.GamePlay));
 	}
 
-	// TODO: hook this up to Jasper's resource manager thing
-	// TEMPORARY while Jasper is coding up his thing
 	private List<AudioClip> GetNotes() {
-		List<AudioClip> notes = new List<AudioClip>();
-
-		notes.Add(Resources.Load("Chanting/CMaj/1_C4") as AudioClip);
-		notes.Add(Resources.Load("Chanting/CMaj/2_E4") as AudioClip);
-		notes.Add(Resources.Load("Chanting/CMaj/3_G4") as AudioClip);
-		notes.Add(Resources.Load("Chanting/CMaj/4_C5") as AudioClip);
-		notes.Add(Resources.Load("Chanting/CMaj/5_E5") as AudioClip);
-		notes.Add(Resources.Load("Chanting/CMaj/6_G5") as AudioClip);
-
-		return notes;
+		return ChordLibrary.Instance.GetRandomChord();
 	}
 
 	private void SetPlayerNote() {
@@ -51,15 +38,15 @@ public class GameResetState : FSMState {
 		playerSource.volume = 0;
 	}
 
-	private void SetMonkNotes() {
+	private void SetMonkNotes(List<GameObject> monks, List<AudioClip> notes, int playerNote) {
 		int monkIndex = 0;
 
-		for(int i = 0; i < GameData.Notes.Count; i++) {
-			if(i == GameData.PlayerNote)
+		for(int i = 0; i < notes.Count; i++) {
+			if(i == playerNote)
 				continue;
 
-			AudioClip note = GameData.Notes[i];
-			GameObject monk = GameData.Monks[monkIndex];
+			AudioClip note = notes[i];
+			GameObject monk = monks[monkIndex];
 
 			AudioSource source = monk.GetComponent<AudioSource>();
 			source.clip = note;
