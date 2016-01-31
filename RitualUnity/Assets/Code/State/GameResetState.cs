@@ -18,6 +18,7 @@ public class GameResetState : FSMState {
 		base.EnterState(transition);
 
 		GameData.Player.transform.position = Vector3.zero;
+		SetPlayerAnim();
 
 		GameData.Notes = GetNotes();
 		GameData.PlayerNote = UnityEngine.Random.Range(1, GameData.Notes.Count - 2);
@@ -30,6 +31,18 @@ public class GameResetState : FSMState {
 
 	private List<AudioClip> GetNotes() {
 		return ChordLibrary.Instance.GetRandomChord();
+	}
+
+	private void SetPlayerAnim() {
+		GameObject player = GameData.Player;
+
+		if(player.transform.childCount > 0) {
+			GameObject.Destroy(player.transform.GetChild(0).gameObject);
+		}
+
+		
+		GameObject monk = GameObject.Instantiate(GameData.GetRandomMonkAnim());
+		monk.transform.parent = player.transform;
 	}
 
 	private void SetPlayerNote() {
