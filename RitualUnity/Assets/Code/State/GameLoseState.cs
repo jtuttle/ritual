@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameLoseState : BaseGameEndState {
 	private AudioClip _loseMusic;
+	private AudioClip _godChant;
 	private GameObject _smokePrototype;
+	private GameObject _idol;
 	private Color _flashColor;
 	private Texture2D _flashPixel;
 
@@ -25,11 +27,14 @@ public class GameLoseState : BaseGameEndState {
 		base.InitState(transition);
 
 		_loseMusic = Resources.Load("Music/Death Bolt") as AudioClip;
+		_godChant = Resources.Load("Music/God Chant") as AudioClip;
 		_smokePrototype = Resources.Load("Prefabs/Smoke") as GameObject;
+
+		_idol = GameObject.Find("Idol");
 
 		_flashColor = Color.white;
 
-		_flashPixel = new Texture2D(1,1);
+		_flashPixel = new Texture2D(1, 1);
 		_flashPixel.SetPixel(0, 0, _flashColor);
 		_flashPixel.Apply();
 	}
@@ -39,7 +44,10 @@ public class GameLoseState : BaseGameEndState {
 
 		SetPixelAlpha(0);
 
-		PlayEndMusic(_loseMusic);
+		PlayEndMusic(_loseMusic, 0.5f);
+
+		_idol.GetComponent<AudioSource>().clip = _godChant;
+		_idol.GetComponent<AudioSource>().Play();
 
 		_flashFrameDelay = 60;
 		_flashFrameDuration = 5;
@@ -51,6 +59,9 @@ public class GameLoseState : BaseGameEndState {
 
 		GameObject.Destroy(_smoke);
 		_smoke = null;
+
+		_idol.GetComponent<AudioSource>().Stop();
+		_idol = null;
 
 		base.ExitState(transition);
 	}

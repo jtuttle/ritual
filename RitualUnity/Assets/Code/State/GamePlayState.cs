@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GamePlayState : FSMState {
+	private Rect _tutorialRect;
+	private Texture2D _tutorialTexture;
+
 	private CharacterController _player;
 	private AudioSource _playerSource;
 
@@ -20,6 +23,8 @@ public class GamePlayState : FSMState {
     public override void InitState(FSMTransition transition) {
         base.InitState(transition);
 
+		_tutorialRect = new Rect(Screen.width * 0.05f, 0, Screen.width * 0.9f, Screen.height);
+		_tutorialTexture = Resources.Load("Textures/UI") as Texture2D;
     }
 
     public override void EnterState(FSMTransition transition) {
@@ -58,16 +63,8 @@ public class GamePlayState : FSMState {
 	public override void OnGUI() {
 		base.OnGUI();
 
-
 		if(!_moved) {
-			GUIStyle centeredStyle = GUI.skin.GetStyle("Label");
-			centeredStyle.alignment = TextAnchor.UpperCenter;
-			centeredStyle.normal.textColor = Color.black;
-			centeredStyle.fontSize = 36;
-
-			string message = "Find your place in the\nritual by listening\nto your fellow monks\n\nPress space to sing!";
-
-			GUI.Label(new Rect(0, (Screen.height / 2) - 100, Screen.width, Screen.height), message, centeredStyle);
+			GUI.DrawTexture(_tutorialRect, _tutorialTexture, ScaleMode.ScaleToFit, true);
 		}
 	}
 
