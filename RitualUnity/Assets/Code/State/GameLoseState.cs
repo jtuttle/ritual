@@ -14,6 +14,8 @@ public class GameLoseState : BaseGameEndState {
 	private int _flashFrameDuration;
 	private bool _flashStarted;
 
+	private float LIGHT_INTENSITY_FADE = 0.02f;
+
 	public GameLoseState()
 		: base(GameState.GameLose) {
 
@@ -56,6 +58,9 @@ public class GameLoseState : BaseGameEndState {
 	public override void Update() {
 		base.Update();
 
+		if(_light.intensity > 0) {
+			_light.intensity -= LIGHT_INTENSITY_FADE;
+		}
 	}
 
 	public override void OnGUI() {

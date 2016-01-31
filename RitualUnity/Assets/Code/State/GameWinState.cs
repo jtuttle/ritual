@@ -14,6 +14,7 @@ public class GameWinState : BaseGameEndState {
 	private float SHAKE_AMOUNT = 0.2f;
 	private float IDOL_RISE_SPEED = 0.04f;
 	private float MONK_FLY_SPEED = 0.08f;
+	private float LIGHT_INTENSITY_GROW = 0.02f;
 
 	public GameWinState()
 		: base(GameState.GameWin) {
@@ -77,6 +78,10 @@ public class GameWinState : BaseGameEndState {
 			_shake = !_shake;
 		} else {
 			_idol.GetComponent<AudioSource>().Stop();
+		}
+
+		if(_light && _light.intensity < 2) {
+			_light.intensity += LIGHT_INTENSITY_GROW;
 		}
 	}
 }

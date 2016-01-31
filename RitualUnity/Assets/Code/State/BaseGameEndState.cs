@@ -7,6 +7,9 @@ public class BaseGameEndState : FSMState {
 	protected FollowCamera _followCam;
 	private float _originalDistance;
 
+	protected Light _light;
+	private float _originalLightIntensity;
+
 	private float CAMERA_ZOOM_SPEED = 0.02f;
 
 	public BaseGameEndState(GameState gameState)
@@ -20,6 +23,9 @@ public class BaseGameEndState : FSMState {
 		_followCam = Camera.main.GetComponent<FollowCamera>();
 		_originalDistance = _followCam.Distance;
 
+		_light = (Light)GameObject.Find("Directional Light").GetComponent<Light>();
+		_originalLightIntensity = _light.intensity;
+
 		SilenceMonks();
 		SilenceMusic();
 	}
@@ -29,15 +35,18 @@ public class BaseGameEndState : FSMState {
 
 		_source = null;
 
+		_light.intensity = _originalLightIntensity;
+		_light = null;
+
 		base.ExitState(transition);
 	}
 
 	public override void Update() {
-		if(!_source.isPlaying) {
-			ExitState(new FSMTransition(GameState.GameReset));	
-		}
+		if(_source && !_source.isPlaying)
+			ExitState(new FSMTransition(GameState.GameReset));
 
-		_followCam.Distance += CAMERA_ZOOM_SPEED;
+		if(_followCam)
+			_followCam.Distance += CAMERA_ZOOM_SPEED;
 	}
 
 	private void SilenceMonks() {
