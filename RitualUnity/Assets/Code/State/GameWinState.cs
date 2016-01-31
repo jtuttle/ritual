@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameWinState : BaseGameEndState {
 	private AudioClip _winMusic;
 
-	private float FLY_SPEED = 0.03f;
+	private float FLY_SPEED = 0.04f;
 
 	public GameWinState()
 		: base(GameState.GameWin) {
@@ -39,6 +39,9 @@ public class GameWinState : BaseGameEndState {
 
 	public override void Update() {
 		base.Update();
+
+		Vector3 playerPos = GameData.Player.transform.position;
+		GameData.Player.transform.position = new Vector3(playerPos.x, playerPos.y + FLY_SPEED, playerPos.z);
 
 		foreach(GameObject monk in GameData.Monks) {
 			Vector3 monkPos = monk.transform.position;
