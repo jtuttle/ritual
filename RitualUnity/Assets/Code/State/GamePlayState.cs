@@ -114,7 +114,7 @@ public class GamePlayState : FSMState {
 				_playerSource.volume = 1;
 				_playerSource.Play();
 
-				SetMonkVolume(0);
+				SetMonkVolume(0.3f);
 			}
 		} else {
 			_playerSource.volume = 0;

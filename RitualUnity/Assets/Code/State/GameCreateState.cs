@@ -12,6 +12,7 @@ public class GameCreateState : FSMState {
 	public override void InitState(FSMTransition transition) {
 		base.InitState(transition);
 
+		GameData.LoadMonkAnimPrototypes();
 	}
 
 	public override void EnterState(FSMTransition transition) {
@@ -37,14 +38,7 @@ public class GameCreateState : FSMState {
 	}
 
 	private List<GameObject> PlaceMonks() {
-		List<GameObject> monkAnims = new List<GameObject>();
-
 		GameObject monkPrototype = Resources.Load("Prefabs/Monk") as GameObject;
-
-		for(int i = 0; i < 4; i++) {
-			string monkAnimPath = "Prefabs/MonkAnims/MonkAnim" + (i + 1);
-			monkAnims.Add(Resources.Load(monkAnimPath) as GameObject);
-		}
 
 		List<GameObject> monks = new List<GameObject>();
 
@@ -54,7 +48,7 @@ public class GameCreateState : FSMState {
 
 		for(int i = 0; i < 5; i++) {
 			GameObject monk = (GameObject)GameObject.Instantiate(monkPrototype);
-			GameObject monkAnim = (GameObject)GameObject.Instantiate(monkAnims[i % 4]);
+			GameObject monkAnim = (GameObject)GameObject.Instantiate(GameData.MonkAnimPrototypes[i % 4]);
 			monkAnim.transform.parent = monk.transform;
 
 			monk.transform.position = new Vector3(monkX, 0, z);
