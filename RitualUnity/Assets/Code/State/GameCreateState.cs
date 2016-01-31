@@ -48,9 +48,9 @@ public class GameCreateState : FSMState {
 
 		GameObject prototype = Resources.Load("Prefabs/Monk") as GameObject;
 
-		float monkX = -6;
-		float xStep = 3;
-		float z = 1;
+		float monkX = -8;
+		float xStep = 4;
+		float z = 8;
 
 		for(int i = 0; i < notes.Count; i++) {
 			if(i == playerNote) continue;
@@ -61,7 +61,7 @@ public class GameCreateState : FSMState {
 			source.clip = notes[i];
 			source.Play();
 
-			monk.transform.position = new Vector3(monkX, 1.5f, z);
+			monk.transform.position = new Vector3(monkX, 0, z);
 			// TODO: change GO name to Monk(note) or something useful
 			monk.name = "Monk (" + notes[i].name + ")";
 
