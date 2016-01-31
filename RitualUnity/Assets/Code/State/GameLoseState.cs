@@ -5,15 +5,18 @@ using UnityEngine;
 public class GameLoseState : BaseGameEndState {
 	private AudioClip _loseMusic;
 	private GameObject _smokePrototype;
-
 	private Color _flashColor;
 	private Texture2D _flashPixel;
+
+	private FollowCamera _followCam;
+	private float _originalDistance;
+	private GameObject _smoke;
 
 	private int _flashFrameDelay;
 	private int _flashFrameDuration;
 	private bool _flashStarted;
 
-	private GameObject _smoke;
+	private float CAMERA_ZOOM_SPEED = 0.02f;
 
 	public GameLoseState()
 		: base(GameState.GameLose) {
@@ -43,15 +46,25 @@ public class GameLoseState : BaseGameEndState {
 		_flashFrameDelay = 60;
 		_flashFrameDuration = 5;
 		_flashStarted = false;
+
+		_followCam = Camera.main.GetComponent<FollowCamera>();
+		_originalDistance = _followCam.Distance;
 	}
 
 	public override void ExitState(FSMTransition transition) {
+		_followCam.Distance = _originalDistance;
 		SetPlayerVisible(true);
 
 		GameObject.Destroy(_smoke);
 		_smoke = null;
 
 		base.ExitState(transition);
+	}
+
+	public override void Update() {
+		base.Update();
+
+		_followCam.Distance += CAMERA_ZOOM_SPEED;
 	}
 
 	public override void OnGUI() {
