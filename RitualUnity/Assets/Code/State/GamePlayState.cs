@@ -5,7 +5,6 @@ using UnityEngine;
 public class GamePlayState : FSMState {
 	private CharacterController _player;
 	private AudioSource _playerSource;
-
 	private float _choirZ;
 
 	private float SPEED = 0.1f;
@@ -18,12 +17,13 @@ public class GamePlayState : FSMState {
     public override void InitState(FSMTransition transition) {
         base.InitState(transition);
 
-		_player = GameObject.Find("Player").GetComponent<CharacterController>();
-		_playerSource = _player.GetComponent<AudioSource>();
     }
 
     public override void EnterState(FSMTransition transition) {
         base.EnterState(transition);
+
+		_player = GameData.Player.GetComponent<CharacterController>();
+		_playerSource = _player.GetComponent<AudioSource>();
 
 		_choirZ = GameData.Monks[0].transform.position.z;
     }
