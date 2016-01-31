@@ -19,4 +19,8 @@ public class GameData {
 			MonkAnimPrototypes.Add(Resources.Load(monkAnimPath) as GameObject);
 		}
 	}
+
+	public static GameObject GetRandomMonkAnim(){
+		return MonkAnimPrototypes[UnityEngine.Random.Range(0, MonkAnimPrototypes.Count)];
+	}
 }
