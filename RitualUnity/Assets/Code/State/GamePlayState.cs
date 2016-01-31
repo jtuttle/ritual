@@ -103,7 +103,7 @@ public class GamePlayState : FSMState {
 			Vector3 move = new Vector3(h, 0, v);
 
 			_player.Move(move);
-			_player.transform.rotation = Quaternion.LookRotation(move, Vector3.up);
+			_player.transform.GetChild(0).rotation = Quaternion.LookRotation(move, Vector3.up);
 
 			_moved = true;
 		}
