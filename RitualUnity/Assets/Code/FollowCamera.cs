@@ -2,6 +2,8 @@
 
 public class FollowCamera : MonoBehaviour {
 	public Transform Target;
+	public Vector3 Offset = Vector3.zero;
+
 	public float Distance = 10.0f;
 	public float Height = 5.0f;
 
@@ -24,6 +26,6 @@ public class FollowCamera : MonoBehaviour {
 		transform.position -= Quaternion.Euler(0, currentRotation, 0) * Vector3.forward * Distance;
 		transform.position = new Vector3(transform.position.x,currentHeight,transform.position.z);
 
-		transform.LookAt(Target);
+		transform.LookAt(Target.transform.position + Offset);
 	}
 }
