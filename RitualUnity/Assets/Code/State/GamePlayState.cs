@@ -125,6 +125,8 @@ public class GamePlayState : FSMState {
 	}
 
 	private bool HasCorrectPlacement() {
+		return true;
+
 		GameObject leftMonk = GameData.Monks[GameData.PlayerNote - 1];
 		GameObject rightMonk = GameData.Monks[GameData.PlayerNote];
 
