@@ -8,6 +8,7 @@ public class GamePlayState : FSMState {
 	private AudioSource _playerSource;
 
 	private Rect _bounds;
+	private bool _moved;
 
 	private float SPEED = 0.1f;
 
@@ -27,6 +28,8 @@ public class GamePlayState : FSMState {
 		_player = GameData.Player.GetComponent<CharacterController>();
 		_playerSource = _player.GetComponent<AudioSource>();
 
+		_moved = false;
+
 		_bounds = GetMovementBounds();
     }
 
@@ -38,6 +41,8 @@ public class GamePlayState : FSMState {
 	}
 
 	public override void Update() {
+		base.Update();
+
 		MovePlayer();
 		PlayPlayerNote();
 
@@ -47,6 +52,22 @@ public class GamePlayState : FSMState {
 			} else {
 				ExitState(new FSMTransition(GameState.GameLose));
 			}
+		}
+	}
+
+	public override void OnGUI() {
+		base.OnGUI();
+
+
+		if(!_moved) {
+			GUIStyle centeredStyle = GUI.skin.GetStyle("Label");
+			centeredStyle.alignment = TextAnchor.UpperCenter;
+			centeredStyle.normal.textColor = Color.black;
+			centeredStyle.fontSize = 36;
+
+			string message = "Find your place in the\nritual by listening\nto your fellow monks\n\nPress space to sing!";
+
+			GUI.Label(new Rect(0, (Screen.height / 2) - 100, Screen.width, Screen.height), message, centeredStyle);
 		}
 	}
 
@@ -81,7 +102,10 @@ public class GamePlayState : FSMState {
 			v -= SPEED;
 		}
 
-		_player.Move(new Vector3(h, 0, v));
+		if(h != 0 || v != 0) {
+			_player.Move(new Vector3(h, 0, v));
+			_moved = true;
+		}
 	}
 
 	private void PlayPlayerNote() {
