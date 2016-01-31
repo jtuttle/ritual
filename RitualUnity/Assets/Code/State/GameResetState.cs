@@ -52,8 +52,19 @@ public class GameResetState : FSMState {
 	}
 
 	private void SetMonkNotes() {
+		int monkIndex = 0;
+
 		for(int i = 0; i < GameData.Notes.Count; i++) {
-			
+			if(i == GameData.PlayerNote)
+				continue;
+
+			AudioClip note = GameData.Notes[i];
+			GameObject monk = GameData.Monks[monkIndex];
+
+			monk.GetComponent<AudioSource>().clip = note;
+			monk.name = "Monk (" + note.name + ")";
+
+			monkIndex++;
 		}
 	}
 }
