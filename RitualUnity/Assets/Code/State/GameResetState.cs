@@ -61,7 +61,10 @@ public class GameResetState : FSMState {
 			AudioClip note = GameData.Notes[i];
 			GameObject monk = GameData.Monks[monkIndex];
 
-			monk.GetComponent<AudioSource>().clip = note;
+			AudioSource source = monk.GetComponent<AudioSource>();
+			source.clip = note;
+			source.Play();
+
 			monk.name = "Monk (" + note.name + ")";
 
 			monkIndex++;
