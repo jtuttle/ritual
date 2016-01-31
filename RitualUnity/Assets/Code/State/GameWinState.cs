@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameWinState : BaseGameEndState {
 	private AudioClip _winMusic;
 
-	private float FLY_SPEED = 0.04f;
+	private GameObject _camTarget;
+
+	private float FLY_SPEED = 0.08f;
 
 	public GameWinState()
 		: base(GameState.GameWin) {
@@ -21,13 +23,22 @@ public class GameWinState : BaseGameEndState {
 	public override void EnterState(FSMTransition transition) {
 		base.EnterState(transition);
 
-		Camera.main.GetComponent<FollowCamera>().enabled = false;
+		//Camera.main.GetComponent<FollowCamera>().enabled = false;
+
+		_camTarget = new GameObject();
+		_camTarget.transform.position = GameData.Player.transform.position;
+
+		Camera.main.GetComponent<FollowCamera>().Target = _camTarget.transform;
+		//_followCam.Distance = 12.0f;
 
 		PlayEndMusic(_winMusic);
 	}
 
 	public override void ExitState(FSMTransition transition) {
-		Camera.main.GetComponent<FollowCamera>().enabled = true;
+		//Camera.main.GetComponent<FollowCamera>().enabled = true;
+		Camera.main.GetComponent<FollowCamera>().Target = GameData.Player.transform;
+
+		GameObject.Destroy(_camTarget);
 
 		foreach(GameObject monk in GameData.Monks) {
 			Vector3 monkPos = monk.transform.position;
