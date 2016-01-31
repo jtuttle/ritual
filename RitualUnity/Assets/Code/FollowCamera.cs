@@ -11,28 +11,19 @@ public class FollowCamera : MonoBehaviour {
 	protected void LateUpdate () {
 		if(!Target) return;
 
-		// Calculate the current rotation angles
-		float wantedRotationAngle = Target.eulerAngles.y;
-		float wantedHeight = Target.position.y + Height;
+		float targetRotation = Target.eulerAngles.y;
+		float targetHeight = Target.position.y + Height;
 
-		float currentRotationAngle = transform.eulerAngles.y;
+		float currentRotation = transform.eulerAngles.y;
 		float currentHeight = transform.position.y;
 
-		// Damp the rotation around the y-axis
-		currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, RotationDamping * Time.deltaTime);
-
-		// Damp the height
-		currentHeight = Mathf.Lerp(currentHeight, wantedHeight, HeightDamping * Time.deltaTime);
-
-		// Convert the angle into a rotation
-		var currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
+		currentRotation = Mathf.LerpAngle(currentRotation, targetRotation, RotationDamping * Time.deltaTime);
+		currentHeight = Mathf.Lerp(currentHeight, targetHeight, HeightDamping * Time.deltaTime);
 
 		transform.position = Target.position;
-		transform.position -= currentRotation * Vector3.forward * Distance;
-
+		transform.position -= Quaternion.Euler(0, currentRotation, 0) * Vector3.forward * Distance;
 		transform.position = new Vector3(transform.position.x,currentHeight,transform.position.z);
 
-		// Always look at the target
 		transform.LookAt(Target);
 	}
 }
