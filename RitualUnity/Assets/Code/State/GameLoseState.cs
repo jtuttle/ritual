@@ -44,9 +44,10 @@ public class GameLoseState : BaseGameEndState {
 
 		SetPixelAlpha(0);
 
-		PlayEndMusic(_loseMusic, 0.7f);
+		PlayEndMusic(_loseMusic, 0.3f);
 
 		_idol.GetComponent<AudioSource>().clip = _godChant;
+		_idol.GetComponent<AudioSource>().volume = 0.5f;
 		_idol.GetComponent<AudioSource>().Play();
 
 		_flashFrameDelay = 60;
@@ -60,6 +61,7 @@ public class GameLoseState : BaseGameEndState {
 		GameObject.Destroy(_smoke);
 		_smoke = null;
 
+		_idol.GetComponent<AudioSource>().volume = 1.0f;
 		_idol.GetComponent<AudioSource>().Stop();
 		_idol = null;
 

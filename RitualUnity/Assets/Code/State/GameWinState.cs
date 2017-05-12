@@ -35,11 +35,12 @@ public class GameWinState : BaseGameEndState {
 
 		_idol = GameObject.Find("Idol");
 		_originalIdolPosition = _idol.transform.position;
+		_idol.GetComponent<AudioSource>().volume = 0.5f;
 		_idol.GetComponent<AudioSource>().Play();
 
 		Camera.main.GetComponent<FollowCamera>().Target = _camTarget.transform;
 
-		PlayEndMusic(_winMusic);
+		PlayEndMusic(_winMusic, 0.7f);
 	}
 
 	public override void ExitState(FSMTransition transition) {
@@ -48,6 +49,7 @@ public class GameWinState : BaseGameEndState {
 		GameObject.Destroy(_camTarget);
 
 		_idol.transform.position = _originalIdolPosition;
+		_idol.GetComponent<AudioSource>().volume = 1.0f;
 
 		foreach(GameObject monk in GameData.Monks) {
 			Vector3 monkPos = monk.transform.position;
